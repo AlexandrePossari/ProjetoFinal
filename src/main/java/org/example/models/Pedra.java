@@ -1,4 +1,4 @@
 package org.example.models;
 
-public class Pedra {
+public class Pedra extends Recurso{
 }

@@ -1,4 +1,4 @@
 package org.example.models;
 
-public class Couro {
+public class Couro extends Recurso{
 }

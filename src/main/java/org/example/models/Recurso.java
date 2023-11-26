@@ -1,4 +1,11 @@
 package org.example.models;
 
-public class Recurso {
+public abstract class Recurso {
+    String data;
+    int quantidade;
+    int preco;
+    int encantamento;
+    int grau;
+
+
 }

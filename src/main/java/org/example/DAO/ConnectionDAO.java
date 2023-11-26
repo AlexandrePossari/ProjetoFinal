@@ -1,6 +1,6 @@
 package org.example.DAO;
 import java.sql.*;
-public class ConnectionDAO {
+public abstract class ConnectionDAO {
     Connection con; //conexão
     PreparedStatement pst; // declaração(query) preparada - código em sql
     Statement st; //declaração(query) - código em sql
