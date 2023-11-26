@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="Initial Commit">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/ConnectionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/ConnectionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Capuz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/Capuz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Recurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/Recurso.java" afterDir="false" />
+    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="Atributos dos models adicionados">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +64,19 @@
       <option name="project" value="LOCAL" />
       <updated>1701031276008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Atributos dos models adicionados">
+      <created>1701034099867</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701034099867</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Atributos dos models adicionados" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atributos dos models adicionados" />
   </component>
 </project>
