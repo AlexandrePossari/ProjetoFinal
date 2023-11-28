@@ -217,6 +217,25 @@ public class Main {
         return sc.nextInt();
     }
 
+    public static int realizarAcoesMenuDeTransmutacaoOuCrafting(int aux){
+        int auxEntrada;
+        switch (aux){
+            case 1:
+                System.out.println("Digite a data de quando ins");
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 0:
+                return 0;
+            default:
+                System.out.println("Opção inválida!");
+                return 0;
+        }
+        return 0;
+    }
+
     public static int exibirMenuDeDelecaoOuAlteracao(){
         System.out.println("\n\n*********MENU DE DELEÇÃO OU ALTERAÇÃO DE DADOS*********");
         System.out.println("1 - Deletar dados de transmutação");
@@ -233,5 +252,48 @@ public class Main {
         return sc.nextInt();
     }
 
+    public static int realizarAcoesMenuDeDelecaoOuAlteracao(int aux){
+        int auxEntrada;
+        switch (aux){
+            //Deleções
+            case 1:
+                System.out.println("Digite a data de quando inseriu os dados da transmutação:");
+                break;
+            case 2:
+                System.out.println("Digite a data de quando inseriu os dados do couro:");
+                break;
+            case 3:
+                System.out.println("Digite a data de quando inseriu os dados do capuz:");
+                break;
+            case 4:
+                System.out.println("Digite a data de quando inseriu os dados da pedra:");
+                break;
+            case 5:
+                System.out.println("Digite a data de quando inseriu os dados do esconderijo:");
+                break;
+            //Atualizações
+            case 6:
+                System.out.println("Digite a data de quando inseriu os dados da transmutação:");
+                break;
+            case 7:
+                System.out.println("Digite a data de quando inseriu os dados do couro:");
+                break;
+            case 8:
+                System.out.println("Digite a data de quando inseriu os dados do capuz:");
+                break;
+            case 9:
+                System.out.println("Digite a data de quando inseriu os dados da pedra:");
+                break;
+            case 10:
+                System.out.println("Digite a data de quando inseriu os dados do esconderijo:");
+                break;
+            case 0:
+                return 0;
+            default:
+                System.out.println("Opção inválida!");
+                return 0;
+        }
+        return 0;
+    }
 
 }
