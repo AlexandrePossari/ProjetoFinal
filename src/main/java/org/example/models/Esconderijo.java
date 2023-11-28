@@ -1,8 +1,40 @@
 package org.example.models;
 
 public class Esconderijo {
-    String data;
-    Pedra pedra;
-    int preco;
-    int lucro;
+    private String data;
+    private Pedra pedra;
+    private int preco;
+    private int lucro;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public Pedra getPedra() {
+        return pedra;
+    }
+
+    public void setPedra(Pedra pedra) {
+        this.pedra = pedra;
+    }
+
+    public int getPreco() {
+        return preco;
+    }
+
+    public void setPreco(int preco) {
+        this.preco = preco;
+    }
+
+    public int getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(int lucro) {
+        this.lucro = lucro;
+    }
 }

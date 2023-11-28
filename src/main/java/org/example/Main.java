@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.models.Transmutacao;
+
 import java.util.Scanner;
 
 public class Main {
@@ -10,15 +12,21 @@ public class Main {
 
         //Menu principal
         do{
+
             auxMenuPrincipal = exibirMenuPrincipal();
-            if(auxMenuPrincipal != 0){
+            if(auxMenuPrincipal == 0){
                 break;
             }
 
             //Menu secundário
             do {
+
                 auxMenuSecundario = exibirMenuSecundario(auxMenuPrincipal);
-            }while(auxMenuSecundario != 0);
+                if(auxMenuSecundario == 0){
+                    break;
+                }
+
+            }while(true);
 
         }while(true);
 
@@ -55,6 +63,7 @@ public class Main {
         return auxReturn;
     }
 
+
     public static int exibirMenuDeInserção(){
         System.out.println("\n\n*********MENU DE INSERÇÃO DE DADOS*********");
         System.out.println("1 - Inserir dados de transmutação");
@@ -66,11 +75,40 @@ public class Main {
         return sc.nextInt();
     }
 
+    public static int realizarAcoesMenuDeInsercao(int aux){
+        switch (aux){
+            case 1:
+                Transmutacao transmutacao = new Transmutacao();
+                System.out.println("Insira o encantamento da transmutação: ");
+                int auxEntrada = sc.nextInt();
+                if (auxEntrada <= 0 && auxEntrada >= 5){
+                    System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
+                    return 0;
+                }
+                transmutacao.se
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 0:
+                return 0;
+            default:
+                System.out.println("Opção inválida!");
+                return 0;
+        }
+    }
+
     public static int exibirMenuDeTransmutacaoOuCrafting(){
         System.out.println("\n\n*********MENU DE TRANSMUTAÇÃO OU CRAFTING*********");
         System.out.println("1 - Realizar transmutacao");
         System.out.println("2 - Realizar crafting de capuz");
         System.out.println("3 - Realizar crafting de esconderijo");
+        System.out.println("0 - Voltar ao menu principal");
         return sc.nextInt();
     }
 
@@ -89,4 +127,6 @@ public class Main {
         System.out.println("0 - Voltar ao menu principal");
         return sc.nextInt();
     }
+
+
 }
