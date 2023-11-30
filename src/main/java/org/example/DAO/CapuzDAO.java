@@ -124,5 +124,49 @@ public class CapuzDAO extends ConnectionDAO{
         }
         return sucesso;
     }
+
+    //Crafta
+    public boolean craftar(int idCapuz, Capuz capuz, int idCouro) {
+        connectToDB();
+        String sql = "UPDATE capuz SET receita=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, capuz.getReceita());
+            pst.setInt(2, idCapuz);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+
+        connectToDB();
+        sql = "UPDATE couro SET Capuz_id=? where Recurso_id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, idCapuz);
+            pst.setInt(2, idCouro);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
 }
 

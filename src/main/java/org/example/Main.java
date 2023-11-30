@@ -3,6 +3,7 @@ package org.example;
 import org.example.DAO.*;
 import org.example.models.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -240,13 +241,110 @@ public class Main {
 
     public static int realizarAcoesMenuDeTransmutacaoOuCrafting(int aux){
         int auxEntrada;
+        int id1;
+        int id2;
+        boolean checkExists1 = false;
+        boolean checkExists2 = false;
         switch (aux){
             case 1:
-                System.out.println("Digite a data de quando ins");
+                TransmutacaoDAO transmutacaoDAO = new TransmutacaoDAO();
+
+                System.out.println("Selecione por id a transmutação para ser realizada:");
+                transmutacaoDAO.selectTransmutacao();
+                auxEntrada = sc.nextInt();
+                transmutacaoDAO.deleteTransmutacao(auxEntrada);
                 break;
             case 2:
+                CouroDAO couroDAO = new CouroDAO();
+                CapuzDAO capuzDAO = new CapuzDAO();
+                ArrayList<Couro> couros = new ArrayList<>();
+                ArrayList<Capuz> capuzes = new ArrayList<>();
+                Couro couro = new Couro();
+                Capuz capuz = new Capuz();
+
+                System.out.println("Selecione por id o couro para ser craftado:");
+                couros = couroDAO.selectCouro();
+                id1 = sc.nextInt();
+
+                for (int i = 0; i < couros.size(); i++) {
+                    if(couros.get(i).getId() == id1){
+                        couro = new Couro(couros.get(i).getId(), couros.get(i).getQuantidade(), couros.get(i).getPreco(), couros.get(i).getEncantamento(), couros.get(i).getGrau());
+                        checkExists1 = true;
+                    }
+                }
+
+                System.out.println("Selecione por id o capuz que será craftado:");
+                capuzes = capuzDAO.selectCapuz();
+                id2 = sc.nextInt();
+
+                for (int i = 0; i < capuzes.size(); i++) {
+                    if(capuzes.get(i).getId() == id2){
+                        capuz = new Capuz(capuzes.get(i).getId(), capuzes.get(i).getPreco(), capuzes.get(i).getEncantamento(), capuzes.get(i).getGrau());
+                        checkExists2 = true;
+                    }
+                }
+
+
+                if(checkExists2 && checkExists1){
+                } else{
+                    System.out.println("Algum dos ids pedidos não foram encontrados!!!");
+                    break;
+                }
+
+                if (capuz.getEncantamento() == couro.getEncantamento() && capuz.getGrau() == couro.getGrau()) {
+                    capuz.setReceita((int) (capuz.getPreco() / ((couro.getPreco() * 8) * 0.5312)));
+                    capuzDAO.craftar(id2, capuz, id1);
+                    System.out.println("Receita: " + capuz.getReceita());
+                }else{
+                    System.out.println("Os graus/encantamentos dos itens não são iguais!!!");
+                }
+
                 break;
             case 3:
+                PedraDAO pedraDAO = new PedraDAO();
+                CapuzDAO capuzDAO = new CapuzDAO();
+                ArrayList<Couro> pedras = new ArrayList<>();
+                ArrayList<Capuz> capuzes = new ArrayList<>();
+                Couro couro = new Couro();
+                Capuz capuz = new Capuz();
+
+                System.out.println("Selecione por id o couro para ser craftado:");
+                pedras = pedraDAO.selectCouro();
+                id1 = sc.nextInt();
+
+                for (int i = 0; i < pedras.size(); i++) {
+                    if(pedras.get(i).getId() == id1){
+                        couro = new Couro(pedras.get(i).getId(), pedras.get(i).getQuantidade(), pedras.get(i).getPreco(), pedras.get(i).getEncantamento(), pedras.get(i).getGrau());
+                        checkExists1 = true;
+                    }
+                }
+
+                System.out.println("Selecione por id o capuz que será craftado:");
+                capuzes = capuzDAO.selectCapuz();
+                id2 = sc.nextInt();
+
+                for (int i = 0; i < capuzes.size(); i++) {
+                    if(capuzes.get(i).getId() == id2){
+                        capuz = new Capuz(capuzes.get(i).getId(), capuzes.get(i).getPreco(), capuzes.get(i).getEncantamento(), capuzes.get(i).getGrau());
+                        checkExists2 = true;
+                    }
+                }
+
+
+                if(checkExists2 && checkExists1){
+                } else{
+                    System.out.println("Algum dos ids pedidos não foram encontrados!!!");
+                    break;
+                }
+
+                if (capuz.getEncantamento() == couro.getEncantamento() && capuz.getGrau() == couro.getGrau()) {
+                    capuz.setReceita((int) (capuz.getPreco() / ((couro.getPreco() * 8) * 0.5312)));
+                    capuzDAO.craftar(id2, capuz, id1);
+                    System.out.println("Receita: " + capuz.getReceita());
+                }else{
+                    System.out.println("Os graus/encantamentos dos itens não são iguais!!!");
+                }
+
                 break;
             case 0:
                 return 0;
