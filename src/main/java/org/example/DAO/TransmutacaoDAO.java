@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import org.example.models.Couro;
 import org.example.models.Esconderijo;
 import org.example.models.Transmutacao;
 
@@ -73,7 +74,7 @@ public class TransmutacaoDAO extends ConnectionDAO{
 
             while (rs.next()) {
 
-                Transmutacao transmutacaoAux = new Transmutacao(rs.getInt("id"),rs.getInt("encantamento"),rs.getInt("grau"),rs.getInt("preco"));
+                Transmutacao transmutacaoAux = new Transmutacao(rs.getInt("id"),rs.getInt("preco"), rs.getInt("encantamento"),rs.getInt("grau"));
 
                 System.out.println("id = " + transmutacaoAux.getId());
                 System.out.println("encantamento = " + transmutacaoAux.getEncantamento());
@@ -121,6 +122,32 @@ public class TransmutacaoDAO extends ConnectionDAO{
                 System.out.println("Erro: " + exc.getMessage());
             }
         }
+        return sucesso;
+    }
+
+    //Transmuta
+    public boolean transmutar(int idRecurso, int encantamento, int grau) {
+        connectToDB();
+        String sql = "UPDATE recurso SET encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, String.valueOf(encantamento));
+            pst.setString(2, String.valueOf(grau));
+            pst.setInt(3, idRecurso);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+
         return sucesso;
     }
 }

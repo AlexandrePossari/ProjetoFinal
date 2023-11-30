@@ -248,11 +248,59 @@ public class Main {
         switch (aux){
             case 1:
                 TransmutacaoDAO transmutacaoDAO = new TransmutacaoDAO();
+                Recurso_has_TransmutacaoDAO recursoHasTransmutacaoDAO = new Recurso_has_TransmutacaoDAO();
+                ArrayList<Transmutacao> transmutacaos = new ArrayList<>();
+                ArrayList<Couro> recursos = new ArrayList<>();
+                Couro recurso = new Couro();
+                Transmutacao transmutacao = new Transmutacao();
 
                 System.out.println("Selecione por id a transmutação para ser realizada:");
-                transmutacaoDAO.selectTransmutacao();
-                auxEntrada = sc.nextInt();
-                transmutacaoDAO.deleteTransmutacao(auxEntrada);
+                transmutacaos = transmutacaoDAO.selectTransmutacao();
+                id1 = sc.nextInt();
+
+                for (int i = 0; i < transmutacaos.size(); i++) {
+                    if(transmutacaos.get(i).getId() == id1){
+                        transmutacao = new Transmutacao(transmutacaos.get(i).getId(), transmutacaos.get(i).getPreco(), transmutacaos.get(i).getEncantamento(), transmutacaos.get(i).getGrau());
+                        checkExists2 = true;
+                    }
+                }
+
+                System.out.println("Selecione por id o recurso para ser transmutado:");
+                recursos = recursoHasTransmutacaoDAO.selectRecurso();
+                id2 = sc.nextInt();
+
+                for (int i = 0; i < recursos.size(); i++) {
+                    if(recursos.get(i).getId() == id2){
+                        recurso = new Couro(recursos.get(i).getId(), recursos.get(i).getQuantidade(), recursos.get(i).getPreco(), recursos.get(i).getEncantamento(), recursos.get(i).getGrau());
+                        checkExists1 = true;
+                    }
+                }
+
+                if(checkExists2 && checkExists1){
+                } else{
+                    System.out.println("Algum dos ids pedidos não foram encontrados!!!");
+                    break;
+                }
+
+                int encantamento, grau;
+
+                System.out.println("trans encanto" + transmutacao.getEncantamento());
+                System.out.println("trans grau" + transmutacao.getGrau());
+                System.out.println("recurso encanto" + recurso.getEncantamento());
+                System.out.println("recurso grau" + recurso.getGrau());
+
+                if (((transmutacao.getEncantamento() - 1) == recurso.getEncantamento()) && transmutacao.getGrau() == recurso.getGrau()) {
+                    encantamento = transmutacao.getEncantamento();
+                    grau = transmutacao.getGrau();
+                }else if(transmutacao.getEncantamento() == 1 && transmutacao.getGrau() == (recurso.getGrau() + 1) && recurso.getEncantamento() == 4) {
+                    encantamento = 1;
+                    grau = transmutacao.getGrau();
+                }else{
+                    System.out.println("Os graus/encantamentos dos recursos e a transmutação não são adequados de acordo com as regras!!!");
+                    break;
+                }
+                transmutacaoDAO.transmutar(id2, encantamento, grau);
+                recursoHasTransmutacaoDAO.insertRecursoHasTransmutacao(id1, id2);
                 break;
             case 2:
                 CouroDAO couroDAO = new CouroDAO();
@@ -283,7 +331,6 @@ public class Main {
                         checkExists2 = true;
                     }
                 }
-
 
                 if(checkExists2 && checkExists1){
                 } else{
