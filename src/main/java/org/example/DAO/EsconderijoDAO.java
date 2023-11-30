@@ -2,6 +2,7 @@ package org.example.DAO;
 
 import org.example.models.Esconderijo;
 import org.example.models.Esconderijo;
+import org.example.models.Esconderijo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -96,5 +97,31 @@ public class EsconderijoDAO extends ConnectionDAO{
             }
         }
         return esconderijos;
+    }
+
+    //UPDATE
+    public boolean updateEsconderijo(int id, Esconderijo esconderijo) {
+        connectToDB();
+        String sql = "UPDATE esconderijo SET preco=?, encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, esconderijo.getPreco());
+            pst.setString(2, String.valueOf(esconderijo.getEncantamento()));
+            pst.setString(3, String.valueOf(esconderijo.getGrau()));
+            pst.setInt(4,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
     }
 }

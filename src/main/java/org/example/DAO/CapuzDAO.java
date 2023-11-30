@@ -2,6 +2,7 @@ package org.example.DAO;
 
 import org.example.models.Capuz;
 import org.example.models.Capuz;
+import org.example.models.Capuz;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -96,6 +97,32 @@ public class CapuzDAO extends ConnectionDAO{
             }
         }
         return capuzs;
+    }
+
+    //UPDATE
+    public boolean updateCapuz(int id, Capuz capuz) {
+        connectToDB();
+        String sql = "UPDATE capuz SET preco=?, encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, capuz.getPreco());
+            pst.setString(2, String.valueOf(capuz.getEncantamento()));
+            pst.setString(3, String.valueOf(capuz.getGrau()));
+            pst.setInt(4,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
     }
 }
 

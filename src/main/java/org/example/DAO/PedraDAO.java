@@ -2,6 +2,7 @@ package org.example.DAO;
 
 import org.example.models.Pedra;
 import org.example.models.Pedra;
+import org.example.models.Pedra;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -99,7 +100,7 @@ public class PedraDAO extends ConnectionDAO{
     public ArrayList<Pedra> selectPedra() {
         ArrayList<Pedra> pedras = new ArrayList<>();
         connectToDB();
-        String sql = "SELECT * FROM recurso LEFT JOIN pedra ON pedra.Recurso_id = recurso.id;";
+        String sql = "SELECT * FROM recurso JOIN pedra ON pedra.Recurso_id = recurso.id;";
 
         try {
             st = con.createStatement();
@@ -133,5 +134,32 @@ public class PedraDAO extends ConnectionDAO{
             }
         }
         return pedras;
+    }
+
+    //UPDATE
+    public boolean updatePedra(int id, Pedra pedra) {
+        connectToDB();
+        String sql = "UPDATE recurso SET quantidade=?, preco=?, encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, pedra.getQuantidade());
+            pst.setInt(2, pedra.getPreco());
+            pst.setString(3, String.valueOf(pedra.getEncantamento()));
+            pst.setString(4, String.valueOf(pedra.getGrau()));
+            pst.setInt(5,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
     }
 }

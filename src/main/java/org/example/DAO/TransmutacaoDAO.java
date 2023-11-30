@@ -97,4 +97,30 @@ public class TransmutacaoDAO extends ConnectionDAO{
         }
         return transmutacaos;
     }
+
+    //UPDATE
+    public boolean updateTransmutacao(int id, Transmutacao transmutacao) {
+        connectToDB();
+        String sql = "UPDATE transmutacao SET preco=?, encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, transmutacao.getPreco());
+            pst.setString(2, String.valueOf(transmutacao.getEncantamento()));
+            pst.setString(3, String.valueOf(transmutacao.getGrau()));
+            pst.setInt(4,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
 }

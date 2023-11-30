@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="feat: delete and select added for couro">
+    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="feat: delete and select added for all needed classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/CapuzDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/CapuzDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/EsconderijoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/EsconderijoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/CouroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/CouroDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/PedraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/PedraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/TransmutacaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/TransmutacaoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Capuz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/Capuz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Esconderijo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/Esconderijo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701305845738</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: delete and select added for all needed classes">
+      <created>1701307005551</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701307005551</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -171,6 +177,7 @@
     <MESSAGE value="feat: insert menu actions added, including inserts into DAOs" />
     <MESSAGE value="fix: models and add delete and select to TransmutacaoDAO" />
     <MESSAGE value="feat: delete and select added for couro" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: delete and select added for couro" />
+    <MESSAGE value="feat: delete and select added for all needed classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: delete and select added for all needed classes" />
   </component>
 </project>

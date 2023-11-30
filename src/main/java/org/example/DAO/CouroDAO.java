@@ -1,9 +1,7 @@
 package org.example.DAO;
 
-import org.example.models.Capuz;
+import org.example.models.*;
 import org.example.models.Couro;
-import org.example.models.Couro;
-import org.example.models.Recurso;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,7 +99,7 @@ public class CouroDAO extends ConnectionDAO{
     public ArrayList<Couro> selectCouro() {
         ArrayList<Couro> couros = new ArrayList<>();
         connectToDB();
-        String sql = "SELECT * FROM recurso LEFT JOIN couro ON couro.Recurso_id = recurso.id;";
+        String sql = "SELECT * FROM recurso JOIN couro ON couro.Recurso_id = recurso.id;";
 
         try {
             st = con.createStatement();
@@ -135,5 +133,32 @@ public class CouroDAO extends ConnectionDAO{
             }
         }
         return couros;
+    }
+
+    //UPDATE
+    public boolean updateCouro(int id, Couro couro) {
+        connectToDB();
+        String sql = "UPDATE recurso SET quantidade=?, preco=?, encantamento=?, grau=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, couro.getQuantidade());
+            pst.setInt(2, couro.getPreco());
+            pst.setString(3, String.valueOf(couro.getEncantamento()));
+            pst.setString(4, String.valueOf(couro.getGrau()));
+            pst.setInt(5,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
     }
 }
