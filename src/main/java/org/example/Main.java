@@ -287,7 +287,12 @@ public class Main {
                 transmutacaoDAO.deleteTransmutacao(auxEntrada);
                 break;
             case 2:
-                System.out.println("Digite a data de quando inseriu os dados do couro:");
+                CouroDAO couroDAO = new CouroDAO();
+
+                System.out.println("Selecione por id o couro para ser deletado:");
+                couroDAO.selectCouro();
+                auxEntrada = sc.nextInt();
+                couroDAO.deleteCouro(auxEntrada);
                 break;
             case 3:
                 System.out.println("Digite a data de quando inseriu os dados do capuz:");

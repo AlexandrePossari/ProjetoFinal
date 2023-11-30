@@ -2,10 +2,13 @@ package org.example.DAO;
 
 import org.example.models.Capuz;
 import org.example.models.Couro;
+import org.example.models.Couro;
+import org.example.models.Recurso;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CouroDAO extends ConnectionDAO{
     boolean sucesso = false; //Para saber se funcionou
@@ -69,5 +72,68 @@ public class CouroDAO extends ConnectionDAO{
             }
         }
         return sucesso;
+    }
+
+    //DELETE
+    public boolean deleteCouro(int id) {
+        connectToDB();
+        String sql = "DELETE FROM recurso where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
+
+    //SELECT
+    public ArrayList<Couro> selectCouro() {
+        ArrayList<Couro> couros = new ArrayList<>();
+        connectToDB();
+        String sql = "SELECT * FROM recurso LEFT JOIN couro ON couro.Recurso_id = recurso.id;";
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            System.out.println("Lista de couros: ");
+
+            while (rs.next()) {
+
+                Couro couroAux = new Couro(rs.getInt("id"),rs.getInt("quantidade"),rs.getInt("preco"),rs.getInt("encantamento"),rs.getInt("grau"));
+
+                System.out.println("id = " + couroAux.getId());
+                System.out.println("quantidade = " + couroAux.getQuantidade());
+                System.out.println("encantamento = " + couroAux.getEncantamento());
+                System.out.println("grau = " + couroAux.getGrau());
+                System.out.println("preco = " + couroAux.getPreco());
+                System.out.println("--------------------------------");
+
+                couros.add(couroAux);
+            }
+            sucesso = true;
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        }
+        return couros;
     }
 }

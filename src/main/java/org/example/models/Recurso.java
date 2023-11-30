@@ -7,6 +7,17 @@ public abstract class Recurso {
     private int encantamento;
     private int grau;
 
+    public Recurso() {
+    }
+
+    public Recurso(int id, int quantidade, int preco, int encantamento, int grau) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.preco = preco;
+        this.encantamento = encantamento;
+        this.grau = grau;
+    }
+
     public int getId() {
         return id;
     }
