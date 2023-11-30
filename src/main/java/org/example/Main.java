@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.DAO.*;
 import org.example.models.*;
 
 import java.util.Scanner;
@@ -25,6 +26,7 @@ public class Main {
                 if(auxMenuSecundario == 0){
                     break;
                 }
+
 
             }while(true);
 
@@ -72,18 +74,20 @@ public class Main {
         System.out.println("4 - Inserir dados de pedra");
         System.out.println("5 - Inserir dados de esconderijo");
         System.out.println("0 - Voltar ao menu principal");
-        return sc.nextInt();
+        int aux = sc.nextInt();
+        return realizarAcoesMenuDeInsercao(aux);
     }
 
     public static int realizarAcoesMenuDeInsercao(int aux){
         int auxEntrada;
         switch (aux){
             case 1:
+                TransmutacaoDAO transmutacaoDAO = new TransmutacaoDAO();
                 Transmutacao transmutacao = new Transmutacao();
 
                 System.out.println("Insira o encantamento da transmutação: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 0 && auxEntrada >= 5){
+                if (checaCondicaoEncantamento(auxEntrada)){
                     System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
                     return 0;
                 }
@@ -91,7 +95,7 @@ public class Main {
 
                 System.out.println("Insira o grau da transmutação: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 3 && auxEntrada >= 9){
+                if (checaCondicaoGrau(auxEntrada)){
                     System.out.println("Graus vão apenas de 4 a 8 !!!");
                     return 0;
                 }
@@ -99,10 +103,14 @@ public class Main {
 
                 System.out.println("Insira o preço desta transmutação: ");
                 auxEntrada = sc.nextInt();
+
                 transmutacao.setPreco(auxEntrada);
+                transmutacaoDAO.insertTransmutacao(transmutacao);
                 break;
             case 2:
+                CouroDAO couroDAO = new CouroDAO();
                 Couro couro = new Couro();
+
                 System.out.println("Insira a quantidade de couros: ");
                 auxEntrada = sc.nextInt();
                 couro.setQuantidade(auxEntrada);
@@ -113,7 +121,7 @@ public class Main {
 
                 System.out.println("Insira o encantamento do couro: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 0 && auxEntrada >= 5){
+                if (checaCondicaoEncantamento(auxEntrada)){
                     System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
                     return 0;
                 }
@@ -121,13 +129,16 @@ public class Main {
 
                 System.out.println("Insira o grau do couro: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 3 && auxEntrada >= 9){
+                if (checaCondicaoGrau(auxEntrada)){
                     System.out.println("Graus vão apenas de 4 a 8 !!!");
                     return 0;
                 }
                 couro.setGrau(auxEntrada);
+
+                couroDAO.insertCouro(couro);
                 break;
             case 3:
+                CapuzDAO capuzDAO = new CapuzDAO();
                 Capuz capuz = new Capuz();
 
                 System.out.println("Insira o preço unitário do capuz: ");
@@ -136,7 +147,7 @@ public class Main {
 
                 System.out.println("Insira o encantamento do capuz: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 0 && auxEntrada >= 5){
+                if (checaCondicaoEncantamento(auxEntrada)){
                     System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
                     return 0;
                 }
@@ -144,14 +155,18 @@ public class Main {
 
                 System.out.println("Insira o grau do capuz: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 3 && auxEntrada >= 9){
+                if (checaCondicaoGrau(auxEntrada)){
                     System.out.println("Graus vão apenas de 4 a 8 !!!");
                     return 0;
                 }
                 capuz.setGrau(auxEntrada);
+
+                capuzDAO.insertCapuz(capuz);
                 break;
             case 4:
+                PedraDAO pedraDAO = new PedraDAO();
                 Pedra pedra = new Pedra();
+
                 System.out.println("Insira a quantidade de pedras: ");
                 auxEntrada = sc.nextInt();
                 pedra.setQuantidade(auxEntrada);
@@ -162,7 +177,7 @@ public class Main {
 
                 System.out.println("Insira o encantamento da pedra: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 0 && auxEntrada >= 5){
+                if (checaCondicaoEncantamento(auxEntrada)){
                     System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
                     return 0;
                 }
@@ -170,13 +185,16 @@ public class Main {
 
                 System.out.println("Insira o grau da pedra: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 3 && auxEntrada >= 9){
+                if (checaCondicaoGrau(auxEntrada)){
                     System.out.println("Graus vão apenas de 4 a 8 !!!");
                     return 0;
                 }
+
                 pedra.setGrau(auxEntrada);
+                pedraDAO.insertPedra(pedra);
                 break;
             case 5:
+                EsconderijoDAO esconderijoDAO = new EsconderijoDAO();
                 Esconderijo esconderijo = new Esconderijo();
 
                 System.out.println("Insira o preço unitário do esconderijo: ");
@@ -185,7 +203,7 @@ public class Main {
 
                 System.out.println("Insira o encantamento do esconderijo: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 0 && auxEntrada >= 5){
+                if (checaCondicaoEncantamento(auxEntrada)){
                     System.out.println("Encantamentos vão apenas de 1 a 4 !!!");
                     return 0;
                 }
@@ -193,11 +211,13 @@ public class Main {
 
                 System.out.println("Insira o grau do esconderijo: ");
                 auxEntrada = sc.nextInt();
-                if (auxEntrada <= 3 && auxEntrada >= 9){
+                if (checaCondicaoGrau(auxEntrada)){
                     System.out.println("Graus vão apenas de 4 a 8 !!!");
                     return 0;
                 }
+
                 esconderijo.setGrau(auxEntrada);
+                esconderijoDAO.insertEsconderijo(esconderijo);
                 break;
             case 0:
                 return 0;
@@ -214,7 +234,8 @@ public class Main {
         System.out.println("2 - Realizar crafting de capuz");
         System.out.println("3 - Realizar crafting de esconderijo");
         System.out.println("0 - Voltar ao menu principal");
-        return sc.nextInt();
+        int aux = sc.nextInt();
+        return realizarAcoesMenuDeTransmutacaoOuCrafting(aux);
     }
 
     public static int realizarAcoesMenuDeTransmutacaoOuCrafting(int aux){
@@ -249,7 +270,8 @@ public class Main {
         System.out.println("9 - Alterar dados de pedra");
         System.out.println("10 - Alterar dados de esconderijo");
         System.out.println("0 - Voltar ao menu principal");
-        return sc.nextInt();
+        int aux = sc.nextInt();
+        return realizarAcoesMenuDeDelecaoOuAlteracao(aux);
     }
 
     public static int realizarAcoesMenuDeDelecaoOuAlteracao(int aux){
@@ -296,4 +318,19 @@ public class Main {
         return 0;
     }
 
+    public static boolean checaCondicaoGrau(int entrada){
+        if(entrada <= 3 || entrada >= 9){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean checaCondicaoEncantamento(int entrada){
+        if(entrada <= 0 || entrada >= 5){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
