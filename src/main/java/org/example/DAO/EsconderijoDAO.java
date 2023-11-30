@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import org.example.models.Capuz;
 import org.example.models.Esconderijo;
 import org.example.models.Esconderijo;
 import org.example.models.Esconderijo;
@@ -109,6 +110,50 @@ public class EsconderijoDAO extends ConnectionDAO{
             pst.setString(2, String.valueOf(esconderijo.getEncantamento()));
             pst.setString(3, String.valueOf(esconderijo.getGrau()));
             pst.setInt(4,id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
+
+    //Crafta
+    public boolean craftar(int idEsconderijo, Esconderijo esconderijo, int idPedra) {
+        connectToDB();
+        String sql = "UPDATE esconderijo SET receita=? where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, esconderijo.getReceita());
+            pst.setInt(2, idEsconderijo);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+
+        connectToDB();
+        sql = "UPDATE pedra SET Esconderijo_id=? where Recurso_id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, idEsconderijo);
+            pst.setInt(2, idPedra);
             pst.execute();
             sucesso = true;
         } catch (SQLException ex) {

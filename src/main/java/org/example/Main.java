@@ -302,30 +302,30 @@ public class Main {
                 break;
             case 3:
                 PedraDAO pedraDAO = new PedraDAO();
-                CapuzDAO capuzDAO = new CapuzDAO();
-                ArrayList<Couro> pedras = new ArrayList<>();
-                ArrayList<Capuz> capuzes = new ArrayList<>();
-                Couro couro = new Couro();
-                Capuz capuz = new Capuz();
+                EsconderijoDAO esconderijoDAO = new EsconderijoDAO();
+                ArrayList<Pedra> pedras = new ArrayList<>();
+                ArrayList<Esconderijo> esconderijos = new ArrayList<>();
+                Pedra pedra = new Pedra();
+                Esconderijo esconderijo = new Esconderijo();
 
-                System.out.println("Selecione por id o couro para ser craftado:");
-                pedras = pedraDAO.selectCouro();
+                System.out.println("Selecione por id a pedra para ser craftado:");
+                pedras = pedraDAO.selectPedra();
                 id1 = sc.nextInt();
 
                 for (int i = 0; i < pedras.size(); i++) {
                     if(pedras.get(i).getId() == id1){
-                        couro = new Couro(pedras.get(i).getId(), pedras.get(i).getQuantidade(), pedras.get(i).getPreco(), pedras.get(i).getEncantamento(), pedras.get(i).getGrau());
+                        pedra = new Pedra(pedras.get(i).getId(), pedras.get(i).getQuantidade(), pedras.get(i).getPreco(), pedras.get(i).getEncantamento(), pedras.get(i).getGrau());
                         checkExists1 = true;
                     }
                 }
 
-                System.out.println("Selecione por id o capuz que será craftado:");
-                capuzes = capuzDAO.selectCapuz();
+                System.out.println("Selecione por id o esconderijo que será craftado:");
+                esconderijos = esconderijoDAO.selectEsconderijo();
                 id2 = sc.nextInt();
 
-                for (int i = 0; i < capuzes.size(); i++) {
-                    if(capuzes.get(i).getId() == id2){
-                        capuz = new Capuz(capuzes.get(i).getId(), capuzes.get(i).getPreco(), capuzes.get(i).getEncantamento(), capuzes.get(i).getGrau());
+                for (int i = 0; i < esconderijos.size(); i++) {
+                    if(esconderijos.get(i).getId() == id2){
+                        esconderijo = new Esconderijo(esconderijos.get(i).getId(), esconderijos.get(i).getPreco(), esconderijos.get(i).getEncantamento(), esconderijos.get(i).getGrau());
                         checkExists2 = true;
                     }
                 }
@@ -337,10 +337,10 @@ public class Main {
                     break;
                 }
 
-                if (capuz.getEncantamento() == couro.getEncantamento() && capuz.getGrau() == couro.getGrau()) {
-                    capuz.setReceita((int) (capuz.getPreco() / ((couro.getPreco() * 8) * 0.5312)));
-                    capuzDAO.craftar(id2, capuz, id1);
-                    System.out.println("Receita: " + capuz.getReceita());
+                if (esconderijo.getEncantamento() == pedra.getEncantamento() && esconderijo.getGrau() == pedra.getGrau()) {
+                    esconderijo.setReceita((int) (esconderijo.getPreco() / ((pedra.getPreco() * 8) * 0.5312)));
+                    esconderijoDAO.craftar(id2, esconderijo, id1);
+                    System.out.println("Receita: " + esconderijo.getReceita());
                 }else{
                     System.out.println("Os graus/encantamentos dos itens não são iguais!!!");
                 }
