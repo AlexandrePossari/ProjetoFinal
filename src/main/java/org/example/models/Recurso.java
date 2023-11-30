@@ -1,18 +1,18 @@
 package org.example.models;
 
 public abstract class Recurso {
-    private String data;
+    private int id;
     private int quantidade;
     private int preco;
     private int encantamento;
     private int grau;
 
-    public String getData() {
-        return data;
+    public int getId() {
+        return id;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getQuantidade() {

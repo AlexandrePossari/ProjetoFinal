@@ -1,28 +1,11 @@
 package org.example.models;
 
 public class Capuz {
-    private String data;
-    private Couro couro;
+    private int id;
     private int preco;
-    private int lucro;
+    private int receita;
     private int encantamento;
     private int grau;
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public Couro getCouro() {
-        return couro;
-    }
-
-    public void setCouro(Couro couro) {
-        this.couro = couro;
-    }
 
     public int getPreco() {
         return preco;
@@ -32,16 +15,16 @@ public class Capuz {
         this.preco = preco;
     }
 
-    public int getLucro() {
-        return lucro;
-    }
-
-    public void setLucro(int lucro) {
-        this.lucro = lucro;
-    }
-
     public int getEncantamento() {
         return encantamento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setEncantamento(int encantamento) {
@@ -54,5 +37,13 @@ public class Capuz {
 
     public void setGrau(int grau) {
         this.grau = grau;
+    }
+
+    public int getReceita() {
+        return receita;
+    }
+
+    public void setReceita(int receita) {
+        this.receita = receita;
     }
 }

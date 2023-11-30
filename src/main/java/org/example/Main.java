@@ -279,7 +279,12 @@ public class Main {
         switch (aux){
             //Deleções
             case 1:
-                System.out.println("Digite a data de quando inseriu os dados da transmutação:");
+                TransmutacaoDAO transmutacaoDAO = new TransmutacaoDAO();
+
+                System.out.println("Selecione por id a transmutação para ser deletada:");
+                transmutacaoDAO.selectTransmutacao();
+                auxEntrada = sc.nextInt();
+                transmutacaoDAO.deleteTransmutacao(auxEntrada);
                 break;
             case 2:
                 System.out.println("Digite a data de quando inseriu os dados do couro:");

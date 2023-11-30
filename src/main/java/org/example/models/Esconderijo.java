@@ -1,27 +1,18 @@
 package org.example.models;
 
 public class Esconderijo {
-    private String data;
-    private Pedra pedra;
+    private int id;
     private int preco;
-    private int lucro;
+    private int receita;
     private int encantamento;
     private int grau;
 
-    public String getData() {
-        return data;
+    public int getId() {
+        return id;
     }
 
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public Pedra getPedra() {
-        return pedra;
-    }
-
-    public void setPedra(Pedra pedra) {
-        this.pedra = pedra;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPreco() {
@@ -30,14 +21,6 @@ public class Esconderijo {
 
     public void setPreco(int preco) {
         this.preco = preco;
-    }
-
-    public int getLucro() {
-        return lucro;
-    }
-
-    public void setLucro(int lucro) {
-        this.lucro = lucro;
     }
 
     public int getEncantamento() {
@@ -54,5 +37,13 @@ public class Esconderijo {
 
     public void setGrau(int grau) {
         this.grau = grau;
+    }
+
+    public int getReceita() {
+        return receita;
+    }
+
+    public void setReceita(int receita) {
+        this.receita = receita;
     }
 }

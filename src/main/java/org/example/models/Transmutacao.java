@@ -1,17 +1,27 @@
 package org.example.models;
 
 public class Transmutacao {
-    private String date;
+    private int id;
     private int preco;
     private int encantamento;
     private int grau;
 
-    public String getDate() {
-        return date;
+    public Transmutacao() {
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public Transmutacao(int id, int preco, int encantamento, int grau) {
+        this.id = id;
+        this.preco = preco;
+        this.encantamento = encantamento;
+        this.grau = grau;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPreco() {
