@@ -295,13 +295,28 @@ public class Main {
                 couroDAO.deleteCouro(auxEntrada);
                 break;
             case 3:
-                System.out.println("Digite a data de quando inseriu os dados do capuz:");
+                CapuzDAO capuzDAO = new CapuzDAO();
+
+                System.out.println("Selecione por id o capuz para ser deletado:");
+                capuzDAO.selectCapuz();
+                auxEntrada = sc.nextInt();
+                capuzDAO.deleteCapuz(auxEntrada);
                 break;
             case 4:
-                System.out.println("Digite a data de quando inseriu os dados da pedra:");
+                PedraDAO pedraDAO = new PedraDAO();
+
+                System.out.println("Selecione por id a pedra para ser deletado:");
+                pedraDAO.selectPedra();
+                auxEntrada = sc.nextInt();
+                pedraDAO.deletePedra(auxEntrada);
                 break;
             case 5:
-                System.out.println("Digite a data de quando inseriu os dados do esconderijo:");
+                EsconderijoDAO esconderijoDAO = new EsconderijoDAO();
+
+                System.out.println("Selecione por id o capuz para ser deletado:");
+                esconderijoDAO.selectEsconderijo();
+                auxEntrada = sc.nextInt();
+                esconderijoDAO.deleteEsconderijo(auxEntrada);
                 break;
             //Atualizações
             case 6:

@@ -1,11 +1,12 @@
 package org.example.DAO;
 
-import org.example.models.Couro;
+import org.example.models.Pedra;
 import org.example.models.Pedra;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PedraDAO extends ConnectionDAO{
     boolean sucesso = false; //Para saber se funcionou
@@ -69,5 +70,68 @@ public class PedraDAO extends ConnectionDAO{
             }
         }
         return sucesso;
+    }
+
+    //DELETE
+    public boolean deletePedra(int id) {
+        connectToDB();
+        String sql = "DELETE FROM recurso where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
+
+    //SELECT
+    public ArrayList<Pedra> selectPedra() {
+        ArrayList<Pedra> pedras = new ArrayList<>();
+        connectToDB();
+        String sql = "SELECT * FROM recurso LEFT JOIN pedra ON pedra.Recurso_id = recurso.id;";
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            System.out.println("Lista de pedras: ");
+
+            while (rs.next()) {
+
+                Pedra pedraAux = new Pedra(rs.getInt("id"),rs.getInt("quantidade"),rs.getInt("preco"),rs.getInt("encantamento"),rs.getInt("grau"));
+
+                System.out.println("id = " + pedraAux.getId());
+                System.out.println("quantidade = " + pedraAux.getQuantidade());
+                System.out.println("encantamento = " + pedraAux.getEncantamento());
+                System.out.println("grau = " + pedraAux.getGrau());
+                System.out.println("preco = " + pedraAux.getPreco());
+                System.out.println("--------------------------------");
+
+                pedras.add(pedraAux);
+            }
+            sucesso = true;
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        }
+        return pedras;
     }
 }

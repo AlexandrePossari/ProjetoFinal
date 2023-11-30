@@ -7,6 +7,16 @@ public class Capuz {
     private int encantamento;
     private int grau;
 
+    public Capuz(int id, int preco, int encantamento, int grau) {
+        this.id = id;
+        this.preco = preco;
+        this.encantamento = encantamento;
+        this.grau = grau;
+    }
+
+    public Capuz() {
+    }
+
     public int getPreco() {
         return preco;
     }

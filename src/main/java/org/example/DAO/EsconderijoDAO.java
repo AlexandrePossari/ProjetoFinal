@@ -1,9 +1,10 @@
 package org.example.DAO;
 
-import org.example.models.Capuz;
+import org.example.models.Esconderijo;
 import org.example.models.Esconderijo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EsconderijoDAO extends ConnectionDAO{
     boolean sucesso = false; //Para saber se funcionou
@@ -33,5 +34,67 @@ public class EsconderijoDAO extends ConnectionDAO{
             }
         }
         return sucesso;
+    }
+
+    //DELETE
+    public boolean deleteEsconderijo(int id) {
+        connectToDB();
+        String sql = "DELETE FROM esconderijo where id=?";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.execute();
+            sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro = " + ex.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                pst.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro: " + exc.getMessage());
+            }
+        }
+        return sucesso;
+    }
+
+    //SELECT
+    public ArrayList<Esconderijo> selectEsconderijo() {
+        ArrayList<Esconderijo> esconderijos = new ArrayList<>();
+        connectToDB();
+        String sql = "SELECT * FROM esconderijo";
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            System.out.println("Lista de esconderijos: ");
+
+            while (rs.next()) {
+
+                Esconderijo esconderijoAux = new Esconderijo(rs.getInt("id"),rs.getInt("preco"),rs.getInt("encantamento"),rs.getInt("grau"));
+
+                System.out.println("id = " + esconderijoAux.getId());
+                System.out.println("encantamento = " + esconderijoAux.getEncantamento());
+                System.out.println("grau = " + esconderijoAux.getGrau());
+                System.out.println("preco = " + esconderijoAux.getPreco());
+                System.out.println("--------------------------------");
+
+                esconderijos.add(esconderijoAux);
+            }
+            sucesso = true;
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            sucesso = false;
+        } finally {
+            try {
+                con.close();
+                st.close();
+            } catch (SQLException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        }
+        return esconderijos;
     }
 }

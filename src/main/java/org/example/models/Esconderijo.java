@@ -7,6 +7,16 @@ public class Esconderijo {
     private int encantamento;
     private int grau;
 
+    public Esconderijo() {
+    }
+
+    public Esconderijo(int id, int preco, int encantamento, int grau) {
+        this.id = id;
+        this.preco = preco;
+        this.encantamento = encantamento;
+        this.grau = grau;
+    }
+
     public int getId() {
         return id;
     }
