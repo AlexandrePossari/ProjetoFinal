@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="feat: arquivos do BD">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="76f824a3-96ee-4237-b242-2ac056e81cea" name="Changes" comment="feat: explicação do código DDL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BD/dbschema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BD/dbschema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701374362519</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: explicação do código DDL">
+      <created>1701376658002</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1701376658002</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -214,6 +219,7 @@
     <MESSAGE value="feat: craftnig de esconderijo e capuz" />
     <MESSAGE value="feat: transmutacao" />
     <MESSAGE value="feat: arquivos do BD" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: arquivos do BD" />
+    <MESSAGE value="feat: explicação do código DDL" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: explicação do código DDL" />
   </component>
 </project>

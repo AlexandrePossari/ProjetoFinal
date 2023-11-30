@@ -284,11 +284,6 @@ public class Main {
 
                 int encantamento, grau;
 
-                System.out.println("trans encanto" + transmutacao.getEncantamento());
-                System.out.println("trans grau" + transmutacao.getGrau());
-                System.out.println("recurso encanto" + recurso.getEncantamento());
-                System.out.println("recurso grau" + recurso.getGrau());
-
                 if (((transmutacao.getEncantamento() - 1) == recurso.getEncantamento()) && transmutacao.getGrau() == recurso.getGrau()) {
                     encantamento = transmutacao.getEncantamento();
                     grau = transmutacao.getGrau();
